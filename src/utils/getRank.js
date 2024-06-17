@@ -1,5 +1,5 @@
-import { unranked, rank1, rank2, rank3, rank4 } from './assets'
-export function getRankImage(mmr) {
+import { unranked, rank1, rank2, rank3, rank4 } from '../assets'
+export default function getRankImage(mmr) {
     if (mmr === 0 || mmr === null) {
       return unranked;
     } else if (mmr >= 1 && mmr <= 1000) {

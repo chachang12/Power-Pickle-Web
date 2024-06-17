@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { getRankImage } from '../getRank'
+import { getRankImage } from '../utils'
 import { unranked, tempprofile } from '../assets'
 
 const LeaderBoardCard = ({ friend, rank }) => {

@@ -3,7 +3,7 @@ import { UserContext } from '../UserContext';
 import { tempprofile, unranked, rank1, rank2, rank3, rank4 } from '../assets'
 import { Link } from 'react-router-dom';
 import { NavBar } from '../components';
-import { getRankImage } from '../getRank';
+import { getRankImage } from '../utils';
 import { logout } from '../firebase';
 import { getUserFriendsIds } from '../firestoreQueries';
 

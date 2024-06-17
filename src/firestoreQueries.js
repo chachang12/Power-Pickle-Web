@@ -53,3 +53,27 @@ export async function createMatch(match) {
     console.error("Error adding document: ", e);
   }
 }
+
+export async function fetchUserFromId(id) {
+  const userDocRef = doc(db, 'users', id);
+  const userDocSnap = await getDoc(userDocRef);
+
+  if (userDocSnap.exists()) {
+    return { id: userDocSnap.id, ...userDocSnap.data() };
+  } else {
+    console.log("No such user!");
+    return null;
+  }
+}
+
+export async function fetchUserFromUsername(username) {
+  const q = query(collection(db, 'users'), where('username', '==', username));
+  const querySnapshot = await getDocs(q);
+
+  if (querySnapshot.docs.length > 0) {
+    return { id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() };
+  } else {
+    console.log("No such user!");
+    return null;
+  }
+}

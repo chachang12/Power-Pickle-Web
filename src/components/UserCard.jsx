@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../UserContext'; // import UserContext
 import { rank1, rank2, rank3, rank4, unranked } from '../assets'
-import { getRankImage } from '../getRank'
+import { getRankImage } from '../utils'
 import { addFriend, removeFriend } from '../firebase';
 import { getUserFriendsIds } from '../firestoreQueries';
 
