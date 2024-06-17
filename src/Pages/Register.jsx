@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { pickleLogo, arrow } from '../assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { signUp } from '../firebase'; // adjust the import path as needed
+import { UserContext } from '../UserContext';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -10,15 +11,24 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [mmr, setMmr] = useState(0); // default value is 0
+  const [profilePicture, setProfilePicture] = useState(''); // default value is an empty string
+  const [matchesPlayed, setMatchesPlayed] = useState(0); // default value is 0
+  const [wins, setWins] = useState(0); // default value is 0
+  const [friends, setFriends] = useState([]); // default value is an empty array
 
   const navigate = useNavigate();
+  const { setUserContext } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const user = await signUp(email, password, username, firstName, lastName, phoneNumber);
+      const user = await signUp(email, password, username, firstName, lastName, phoneNumber, mmr, profilePicture, matchesPlayed, wins, friends);
       console.log('User signed up:', user);
+
+      // Set the UserContext
+      setUserContext(user);
 
       // Navigate to the home page
       navigate('/home');
