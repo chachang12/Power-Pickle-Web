@@ -23,14 +23,16 @@ const UserCard = ({ searchedUser, user }) => {
     const handleAddFriend = async () => {
         try {
             await addFriend(searchedUser); // call the addFriend function, passing the friend's ID
+            setIsFriend(true); // update the isFriend state
         } catch (error) {
             console.error(error);
         }
     };
-
+    
     const handleRemoveFriend = async () => {
         try {
             await removeFriend(searchedUser); // call the removeFriend function, passing the friend's ID
+            setIsFriend(false); // update the isFriend state
         } catch (error) {
             console.error(error);
         }

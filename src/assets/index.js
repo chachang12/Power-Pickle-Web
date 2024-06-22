@@ -11,6 +11,7 @@ import tournamenticon from './tournamenticon.svg';
 import plusicon from './plusicon.svg';
 import searchicon from './searchicon.svg';
 import tempprofile from './tempprofile.svg';
+import check from './check.svg';
 
 export {
     rank1,
@@ -25,5 +26,6 @@ export {
     tournamenticon,
     plusicon,
     searchicon,
-    tempprofile
+    tempprofile,
+    check
 }
