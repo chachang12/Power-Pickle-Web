@@ -9,7 +9,7 @@ const ConfirmationIcon = ({ player }) => {
   return (
     <div className='flex flex-col'>
       <img src={player.profilePicture || tempprofile} className={clippedImage}/>
-      <h2 className='font-Inter font-semibold pt-6'>
+      <h2 className='font-Inter font-semibold pt-6 text-white'>
         {player.username}
       </h2>
     </div>

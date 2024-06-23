@@ -6,6 +6,7 @@ import EditProfile from './EditProfile';
 import Explore from './Explore';
 import MatchCreation from './MatchCreation';
 import MatchConfirmation from './MatchConfirmation';
+import Friends from './Friends';
 
 
 
@@ -17,5 +18,6 @@ export {
     EditProfile,
     Explore,
     MatchCreation,
-    MatchConfirmation
+    MatchConfirmation,
+    Friends
 }

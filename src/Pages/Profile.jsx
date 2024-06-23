@@ -70,13 +70,19 @@ const Profile = () => {
                     </h3>
                 </div>
                 <div className='flex flex-col items-center'>
-                    <h2>
-                        Friends
-                    </h2>
-                    <h3>
-                        {/* TODO: Use some kind of function to count the number of friends ids that are in the database. */}
-                        {friendsIds}
-                    </h3>
+                    <Link to="/friends">
+                        <div className='flex flex-col items-center'>
+                            <h2>
+                                Friends
+                            </h2>
+                            <h3>
+                                {/* Count of the users friends. */}
+                                {friendsIds}
+                            </h3>
+                        </div>
+                        
+                    </Link>
+                    
                 </div>
             </div>
         </div>
