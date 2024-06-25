@@ -30,7 +30,7 @@ const MatchCard = ({ match }) => {
                     <h1>
                         {dateHandler(match.date)}
                     </h1>
-                    <h1 className={userWon ? 'text-green-500' : 'text-red-500'}>
+                    <h1 className={userWon ? 'text-green-500' : 'text-red-800'}>
                         {userWon ? 'W' : 'L'}
                     </h1>
                 </div>
@@ -46,7 +46,7 @@ const MatchCard = ({ match }) => {
                     </h1>
                 </div>
                 <div className='flex flex-row sp'>
-                <h1 className={userWon ? 'text-green-500' : 'text-red-500'}>
+                <h1 className={userWon ? 'text-green-500' : 'text-red-800'}>
                     {(match.mmrChanges[userData.id] > 0) ? '+' + Math.abs(match.mmrChanges[userData.id]) : '-' + Math.abs(match.mmrChanges[userData.id])}
                 </h1>         
                 </div>
