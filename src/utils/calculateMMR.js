@@ -11,9 +11,9 @@ function mmrEquationTop(userMMR, opposingMMRAverage, scoreDifference) {
 function mmrEquationBottom(userMMR, opposingMMRAverage, scoreDifference) {
     const mmrDifference = Math.abs(userMMR - opposingMMRAverage);
     // mmr equation
-    const mmrChange = Math.round(-(25 + (scoreDifference * 0.00000053 * Math.pow(mmrDifference, 2))))
-    if (mmrChange > 10){
-        return 10;
+    const mmrChange = Math.round(-(0.00000163) * Math.pow((mmrDifference - (80 * (scoreDifference))), 2) + 25)
+    if (mmrChange < 5) {
+        return 5;
     }
     if (userMMR - mmrChange < 0) {
         mmrChange = userMMR;

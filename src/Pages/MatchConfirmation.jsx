@@ -42,8 +42,7 @@ const MatchConfirmation = () => {
             
         });
         await createMatch(match.toObject());
-        if (userData.mmr > mmrChanges[userData.id]) { await updateUserMMR(userData.id, mmrChanges[userData.id]); }
-        
+        await updateUserMMR(userData.id, mmrChanges[userData.id]);
         await updateUserMMR(teammate.id, mmrChanges[teammate.id]);
         await updateUserMMR(opponent1.id, mmrChanges[opponent1.id]);
         await updateUserMMR(opponent2.id, mmrChanges[opponent2.id]);
