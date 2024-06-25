@@ -4,7 +4,7 @@ import LeaderBoardCard from './LeaderBoardCard';
 import ConfirmationIcon from './ConfirmationIcon';
 import FriendCard from './FriendCard';
 import MatchCard from './MatchCard';
-import { HomeIcon, ExploreIcon, CourtIcon, ProfileIcon, PowerPickleIcon } from './icons';
+import { HomeIcon, ExploreIcon, CourtIcon, ProfileIcon, PowerPickleIcon, Arrow } from './icons';
 
 export {
     NavBar,
@@ -17,5 +17,6 @@ export {
     ExploreIcon,
     CourtIcon,
     ProfileIcon,
-    PowerPickleIcon
+    PowerPickleIcon,
+    Arrow
 }

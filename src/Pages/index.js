@@ -7,6 +7,7 @@ import Explore from './Explore';
 import MatchCreation from './MatchCreation';
 import MatchConfirmation from './MatchConfirmation';
 import Friends from './Friends';
+import LandingPage from './LandingPage';
 
 
 
@@ -19,5 +20,6 @@ export {
     Explore,
     MatchCreation,
     MatchConfirmation,
-    Friends
+    Friends,
+    LandingPage
 }

@@ -33,28 +33,30 @@ const Home = () => {
   }, [userData, friends]);
 
   return (
-    <div className='pt-4 flex flex-col'>
-      <div className='flex flex-col items-center'>
-        <div className='pb-4'>
-          <PowerPickleIcon color='#02261C' />
+    <div className='flex flex-col h-screen'>
+      <div className='flex-grow flex flex-col'>
+        <div className='flex flex-col items-center'>
+          <div className='pb-4'>
+            <PowerPickleIcon color='#02261C' />
+          </div>
+          <div id='UpComingEvents'></div>
+          <div className='pb-4'>
+            <h1 className='font-inter text-white text-[36px] font-semibold'>
+              Leaderboard
+            </h1>
+          </div>
         </div>
-        <div id='UpComingEvents'></div>
-        <div className='pb-4'>
-          <h1 className='font-inter text-white text-[36px] font-semibold'>
-            Leaderboard
-          </h1>
+        <div className='bg-off-white w-full flex flex-col flex-grow rounded-t-3xl'>
+          <div className='overflow-y-auto w-full flex flex-col items-center'>
+            {leaderboardData.sort((a, b) => b.mmr - a.mmr).map((friend, index) => <LeaderBoardCard key={index} friend={friend} rank={index + 1} />)}
+          </div>
         </div>
       </div>
-      <div className='bg-off-white w-screen flex-grow h-[642px] rounded-t-3xl'>
-        <div className='overflow-y-auto w-full flex flex-col items-center'>
-          {leaderboardData.sort((a, b) => b.mmr - a.mmr).map((friend, index) => <LeaderBoardCard key={index} friend={friend} rank={index + 1} />)}
-        </div>
-      </div>
-      <div>
+      <div className='mt-auto'>
         <NavBar />
       </div>
     </div>
-  )
+  );
 }
 
 // No API Calls

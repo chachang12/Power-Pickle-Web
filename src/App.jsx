@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { Login, Register, Home, Profile, EditProfile, Explore, MatchCreation, MatchConfirmation, Friends } from './pages';
+import { Login, Register, Home, Profile, EditProfile, Explore, MatchCreation, MatchConfirmation, Friends, LandingPage } from './pages';
 import { db, app, analytics, auth, getUserData } from './firebase';
 import { UserContext } from './UserContext';
 
@@ -35,7 +35,8 @@ function App() {
     <UserContext.Provider value={{user, userData, setUserContext, setUserData, error}}>
       <Router>
         <Routes>
-          <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
+          
+          <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
           <Route path="/register" element={user ? <Navigate to="/home" /> : <Register />} />
           <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
           <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />

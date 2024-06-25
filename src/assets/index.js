@@ -14,6 +14,8 @@ import court from './court.svg';
 import list from './list.svg';
 import person from './person.svg';
 import plus from './plus.svg';
+import pickleballstock from './pickleballstock.jpg';
+import carsonlogo from './carsonlogo.svg';
 
 export {
     rank1,
@@ -31,5 +33,7 @@ export {
     court,
     list,
     person,
-    plus
+    plus,
+    pickleballstock,
+    carsonlogo
 }

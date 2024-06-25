@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -11,6 +10,10 @@ export default {
         'dark-green': '#02261C',
         'matcha-green': '#A0AE9B',
         'off-white': '#eaeadf',
+        'dark-blue': '#011C40',
+      },
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif'],
       },
     },
   },

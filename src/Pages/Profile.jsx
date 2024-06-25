@@ -44,7 +44,7 @@ const Profile = () => {
   
 
   return (
-    <div className='flex flex-col items-center mt-12 '>
+    <div className='flex flex-col h-screen items-center mt-12 '>
         <div className="flex flex-row space-x-10 pb-4">
             <img src={userData.profilePicture || tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
             <img src={rankImage} alt="rank" className="h-[150px]" />
@@ -94,17 +94,17 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-        <div id='RecentMatches' className='flex flex-col items-center pt-4 bg-off-white w-full rounded-t-3xl'>
+        <div id='RecentMatches' className='flex flex-col items-center pt-4 bg-off-white w-full rounded-t-3xl flex-grow'>
             <div className='w-[90%]'>
                 <h2 className='text-dark-green font-semibold pb-2'>
-                Recent Matches
+                    Recent Matches
                 </h2>
             </div>
-            <div className='overflow-y-auto max-h-[420px] w-full flex flex-col items-center'>
+            <div className='overflow-y-auto w-full flex-grow flex flex-col items-center'> {/* Make this div grow to fill available space and scrollable */}
                 <div className='w-[90%]'>
-                {matches.map((match, index) => (
+                    {matches.map((match, index) => (
                     <MatchCard key={index} match={match} />
-                ))}
+                    ))}
                 </div>
             </div>
         </div>
