@@ -5,13 +5,15 @@ import rank4 from './4.svg';
 import unranked from './unranked.svg';
 import pickleLogo from './picklelogo.svg';
 import arrow from './arrow.svg';
-import homeicon from './homeicon.svg';
-import profileicon from './profileicon.svg';
-import tournamenticon from './tournamenticon.svg';
-import plusicon from './plusicon.svg';
-import searchicon from './searchicon.svg';
 import tempprofile from './tempprofile.svg';
 import check from './check.svg';
+import house from './house.svg';
+import users from './users.svg';
+import id from './id.svg';
+import court from './court.svg';
+import list from './list.svg';
+import person from './person.svg';
+import plus from './plus.svg';
 
 export {
     rank1,
@@ -21,11 +23,13 @@ export {
     unranked,
     pickleLogo,
     arrow,
-    homeicon,
-    profileicon,
-    tournamenticon,
-    plusicon,
-    searchicon,
     tempprofile,
-    check
+    check,
+    house,
+    users,
+    id,
+    court,
+    list,
+    person,
+    plus
 }

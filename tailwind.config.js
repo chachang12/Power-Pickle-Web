@@ -9,6 +9,8 @@ export default {
       colors: {
         'light-green': '#CFDEC4',
         'dark-green': '#02261C',
+        'matcha-green': '#A0AE9B',
+        'off-white': '#eaeadf',
       },
     },
   },

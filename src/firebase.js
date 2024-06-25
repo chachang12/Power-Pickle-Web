@@ -141,7 +141,7 @@ const getUserData = async () => {
       const userData = userSnap.data();
       const { username, wins, matchesPlayed, mmr, profilePicture, friends } = userData;
 
-      return { username, wins, matchesPlayed, mmr, profilePicture, friends};
+      return { id: user.uid, username, wins, matchesPlayed, mmr, profilePicture, friends};
     } else {
       console.log('No such document!');
     }

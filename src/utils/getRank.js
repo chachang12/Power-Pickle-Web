@@ -8,7 +8,7 @@ export default function getRankImage(mmr) {
       return rank2;
     } else if (mmr > 2000 && mmr <= 3000) {
       return rank3;
-    } else if (mmr > 3000 && mmr <= 4000) {
+    } else if (mmr > 3000) {
       return rank4;
     }
   }

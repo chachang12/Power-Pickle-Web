@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, where, addDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from './firebase';
 
 export const searchUsers = async (username) => {
@@ -54,6 +54,26 @@ export async function createMatch(match) {
   }
 }
 
+export async function fetchMatchesForUser(userId) {
+  const matchesRef = collection(db, 'matches');
+  const q1 = query(matchesRef, where('team1PlayerIds', 'array-contains', userId));
+  const q2 = query(matchesRef, where('team2PlayerIds', 'array-contains', userId));
+
+  const matches = [];
+
+  const querySnapshot1 = await getDocs(q1);
+  querySnapshot1.forEach((doc) => {
+    matches.push({ id: doc.id, ...doc.data() });
+  });
+
+  const querySnapshot2 = await getDocs(q2);
+  querySnapshot2.forEach((doc) => {
+    matches.push({ id: doc.id, ...doc.data() });
+  });
+
+  return matches;
+}
+
 export async function fetchUserFromId(id) {
   const userDocRef = doc(db, 'users', id);
   const userDocSnap = await getDoc(userDocRef);
@@ -76,4 +96,22 @@ export async function fetchUserFromUsername(username) {
     console.log("No such user!");
     return null;
   }
+}
+
+export async function updateUserMMR(userId, mmrChange) {
+  const userRef = doc(db, 'users', userId);
+
+  // Atomically increment the user's MMR.
+  await updateDoc(userRef, {
+    mmr: increment(mmrChange)
+  });
+}
+
+export async function incrementUserWins(userId) {
+  const userRef = doc(db, 'users', userId);
+
+  // Atomically increment the user's wins.
+  await updateDoc(userRef, {
+    wins: increment(1)
+  });
 }

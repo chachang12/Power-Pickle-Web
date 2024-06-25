@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { tempprofile, unranked, rank1, rank2, rank3, rank4 } from '../assets'
 import { Link } from 'react-router-dom';
-import { NavBar } from '../components';
+import { NavBar, MatchCard } from '../components';
 import { getRankImage } from '../utils';
 import { logout } from '../firebase';
-import { getUserFriendsIds } from '../firestoreQueries';
+import { getUserFriendsIds, fetchMatchesForUser } from '../firestoreQueries';
 
 const Profile = () => {
   const { userData } = useContext(UserContext);
@@ -17,7 +17,7 @@ const Profile = () => {
     setRankImage(getRankImage(userData.mmr)); // call getRankImage after data fetch
   }, [userData]);
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchFriends = async () => {
         const ids = await getUserFriendsIds(user);
         const numFriends = ids.length;
@@ -25,33 +25,41 @@ const Profile = () => {
     };
 
     fetchFriends();
-}, [user]);
+    }, [user]);
+
+    const [matches, setMatches] = useState([]);
+
+    useEffect(() => {
+        const fetchMatches = async () => {
+            const userMatches = await fetchMatchesForUser(user.uid);
+            const sortedMatches = userMatches.sort((a, b) => b.date - a.date);
+            setMatches(sortedMatches);
+        };
+    
+        fetchMatches();
+    }, [user]);
 
 
 
   
 
   return (
-    <div className='flex flex-col items-center mt-12'>
-        <button onClick={logout}>
-            Logout
-        </button>
+    <div className='flex flex-col items-center mt-12 '>
         <div className="flex flex-row space-x-10 pb-4">
-            {/* TODO: Profile Image */} 
             <img src={userData.profilePicture || tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
             <img src={rankImage} alt="rank" className="h-[150px]" />
         </div>
-        <h1 className='font-Inter text-white text-[28px] font-semibold pb-4'>
+        <h1 className='font-Inter text-white text-[28px] font-semibold pb-4' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>
             {userData.username}
         </h1>
         <div className='pb-4'>
             <Link 
                 to={'/editprofile'}
-                className='bg-light-green px-14 py-2 rounded-md font-semibold'>
+                className='bg-light-green px-14 py-2 rounded-md text-dark-green font-semibold'>
                 Edit Profile
             </Link>
         </div>
-        <div className='text-white font-inter'>
+        <div className='text-white font-inter pb-4'>
             <div className='flex flex-row space-x-6'>
                 <div className='flex flex-col items-center'>
                     <h2>
@@ -86,8 +94,19 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-        <div id='RecentMatches'>
-
+        <div id='RecentMatches' className='flex flex-col items-center pt-4 bg-off-white w-full rounded-t-3xl'>
+            <div className='w-[90%]'>
+                <h2 className='text-dark-green font-semibold pb-2'>
+                Recent Matches
+                </h2>
+            </div>
+            <div className='overflow-y-auto max-h-[420px] w-full flex flex-col items-center'>
+                <div className='w-[90%]'>
+                {matches.map((match, index) => (
+                    <MatchCard key={index} match={match} />
+                ))}
+                </div>
+            </div>
         </div>
         <div className='fixed inset-x-0 bottom-6'>
           <NavBar />

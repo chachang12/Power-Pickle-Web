@@ -3,9 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* #02261C Original */
 body {
-  background-color: #02261C;
+  background-color: #A0AE9B;
   font-family: 'Inter', sans-serif;
+  
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { uploadImageAndGetURL, getUserData, updateUserData } from '../firebase';
+import { uploadImageAndGetURL, getUserData, updateUserData, logout } from '../firebase';
 import { tempprofile } from '../assets';
 import { UserContext } from '../UserContext.js';
 
@@ -45,6 +45,9 @@ const EditProfile = () => {
         </div>
         
       </div>
+      <button onClick={logout}>
+        Logout
+      </button>
     </div>
   );
 };

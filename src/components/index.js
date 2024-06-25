@@ -3,11 +3,19 @@ import UserCard from './UserCard';
 import LeaderBoardCard from './LeaderBoardCard';
 import ConfirmationIcon from './ConfirmationIcon';
 import FriendCard from './FriendCard';
+import MatchCard from './MatchCard';
+import { HomeIcon, ExploreIcon, CourtIcon, ProfileIcon, PowerPickleIcon } from './icons';
 
 export {
     NavBar,
     UserCard,
     LeaderBoardCard,
     ConfirmationIcon,
-    FriendCard
+    FriendCard,
+    MatchCard,
+    HomeIcon,
+    ExploreIcon,
+    CourtIcon,
+    ProfileIcon,
+    PowerPickleIcon
 }

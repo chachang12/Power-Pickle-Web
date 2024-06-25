@@ -1,4 +1,4 @@
-import { NavBar } from '../components'
+import { NavBar, PowerPickleIcon } from '../components'
 import { pickleLogo } from '../assets'
 import { searchUsers } from '../firestoreQueries.js'
 import UserCard from '../components/UserCard'
@@ -26,16 +26,20 @@ const Explore = () => {
 
   return (
     <div className='flex flex-col justify-center items-center pt-8'>
-      <img src={pickleLogo} className='w-[100px] pb-4'/>
-      <form onSubmit={handleSubmit}>
-        <input 
-          name="search"
-          type="text"
-          placeholder="Search"
-          className='bg-light-green px-12 py-2 rounded-md my-2 font-Inter placeholder-dark-green font-light'
-          onChange={handleInputChange}
-        />
-      </form>
+      <div className='pb-4'>
+        <PowerPickleIcon color={'#02261C'}/>
+      </div>
+      <div className='w-full px-4'>
+        <form onSubmit={handleSubmit}>
+          <input 
+            name="search"
+            type="text"
+            placeholder="Search"
+            className='bg-off-white w-full py-2 rounded-md pl-3 font-Inter placeholder-dark-green font-light'
+            onChange={handleInputChange}
+          />
+        </form>
+      </div>
       {users.map(searchedUser => <UserCard key={searchedUser.username} searchedUser={searchedUser} user={user} />)} {/* pass the user context as a prop */}
       <div className='fixed inset-x-0 bottom-6'>
         <NavBar />

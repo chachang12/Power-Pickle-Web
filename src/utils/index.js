@@ -1,7 +1,9 @@
 import getRankImage from './getRank'
-import scoreLogic from './scoreLogic'
+import calculateMMR from './calculateMMR'
+import dateHandler from './dateHandler'
 
 export {
     getRankImage,
-    scoreLogic
+    calculateMMR,
+    dateHandler
 }
