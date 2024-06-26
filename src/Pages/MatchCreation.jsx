@@ -46,7 +46,7 @@ const MatchCreation = () => {
   return (
     <div className='flex flex-col justify-center items-center pt-4'>
       <div className='pb-4'>
-          <PowerPickleIcon color='#02261C' />
+          <PowerPickleIcon color='#011C40' />
         </div>
       <div className='flex flex-col items-center'>
         <h2 className={matchCreationFormHeader}>
@@ -63,7 +63,7 @@ const MatchCreation = () => {
           {teammateData && <img src={check} alt="check" className='w-[25px]'/>} {/* Render check asset when teammate is confirmed */}
           <button 
             onClick={() => handleConfirm(teammate, setTeammateData)} 
-            className={`bg-dark-green text-white font-regular py-1 px-4 rounded ${teammateData ? 'opacity-50' : ''}`} // Apply opacity when teammate is confirmed
+            className={`bg-dark-blue text-white font-regular py-1 px-4 rounded ${teammateData ? 'opacity-50' : ''}`} // Apply opacity when teammate is confirmed
             disabled={!!teammateData} // Disable button when teammate is confirmed
           >
             Confirm
@@ -88,7 +88,7 @@ const MatchCreation = () => {
           {opponent1Data && <img src={check} alt="check" className='w-[25px]'/>} {/* Render check asset when opponent1 is confirmed */}
           <button 
             onClick={() => handleConfirm(opponent1, setOpponent1Data)}
-            className={`bg-dark-green text-white font-regular py-1 px-4 rounded ${opponent1Data ? 'opacity-50' : ''}`} // Apply opacity when opponent1 is confirmed
+            className={`bg-dark-blue text-white font-regular py-1 px-4 rounded ${opponent1Data ? 'opacity-50' : ''}`} // Apply opacity when opponent1 is confirmed
             disabled={!!opponent1Data} // Disable button when opponent1 is confirmed
           >
             Confirm
@@ -105,7 +105,7 @@ const MatchCreation = () => {
           {opponent2Data && <img src={check} alt="check" className='w-[25px]'/>} {/* Render check asset when opponent2 is confirmed */}
           <button 
             onClick={() => handleConfirm(opponent2, setOpponent2Data)}
-            className={`bg-dark-green text-white font-regular py-1 px-4 rounded ${opponent2Data ? 'opacity-50' : ''}`} // Apply opacity when opponent2 is confirmed
+            className={`bg-dark-blue text-white font-regular py-1 px-4 rounded ${opponent2Data ? 'opacity-50' : ''}`} // Apply opacity when opponent2 is confirmed
             disabled={!!opponent2Data} // Disable button when opponent2 is confirmed
           >
             Confirm
@@ -113,7 +113,7 @@ const MatchCreation = () => {
         </div>
         {teammateData && opponent1Data && opponent2Data && (
           <button onClick={handleNext} className='py-4' >
-            <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-green px-2 py-1 rounded-md'>
+            <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-blue px-2 py-1 rounded-md'>
               Next
             </h6>
           </button>

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../UserContext'; // import UserContext
-import { rank1, rank2, rank3, rank4, unranked } from '../assets'
-import { getRankImage } from '../utils'
+import { getRankImage } from '../utils';
 import { addFriend, removeFriend } from '../firebase';
 import { getUserFriendsIds } from '../firestoreQueries';
 
-const UserCard = ({ searchedUser, user }) => {
-    const [rankImage, setRankImage] = useState(unranked); // default image
+const UserCard = ({ searchedUser }) => {
+    const [rankImage, setRankImage] = useState('');
     const [isFriend, setIsFriend] = useState(false); // state variable to track if the user is a friend
+    const { user } = useContext(UserContext); // Use UserContext to access the current user
 
     useEffect(() => {
         setRankImage(getRankImage(searchedUser.mmr)); // call getRankImage after data fetch
@@ -38,19 +38,23 @@ const UserCard = ({ searchedUser, user }) => {
         }
     }
 
-  return (
-    <div className='flex flex-row bg-white px-4 py-2 rounded-lg bg-opacity-50 space-x-8'>
-        <img src={searchedUser.profilePicture} alt={searchedUser.username} className="rounded-full w-[75px] h-[75px] bg-[#808080] object-cover" />
-        <h2 className='font-Inter font-semibold pt-6'>
-            {searchedUser.username}
-        </h2>
-        <img src={rankImage} alt="rank" className="h-[75px]" />
-        {/* TODO: Make it so the current user doesnt show up */}
-        <button className='bg-light-green rounded-lg' onClick={isFriend ? handleRemoveFriend : handleAddFriend}>
-            {isFriend ? 'Remove' : 'Add'}
-        </button>
-    </div>
-  )
+    return (
+        <div className='m-4 w-[90%]'>
+            <div className='flex flex-row bg-dark-blue px-4 py-2 rounded-xl space-x-4 items-center border border-white border-opacity-50 backdrop-blur-md bg-opacity-90'> {/* Added shadow-lg for drop shadow */}
+                <img src={searchedUser.profilePicture} alt={searchedUser.username} className="rounded-full w-[75px] h-[75px] bg-[#808080] object-cover" />
+                <h2 className='font-Inter font-light text-white'>
+                    {searchedUser.username}
+                </h2>
+                <img src={rankImage} alt="rank" className="h-[50px]" />
+                {user.uid !== searchedUser.id && (
+                    <button className='bg-off-white rounded-lg px-2' onClick={isFriend ? handleRemoveFriend : handleAddFriend}>
+                        {isFriend ? 'Remove' : 'Add'}
+                    </button>
+                )}
+            </div>
+        </div>
+    )
+    
 }
 
 export default UserCard

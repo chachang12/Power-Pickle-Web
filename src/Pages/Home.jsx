@@ -9,16 +9,18 @@ import { UserContext } from '../UserContext'
 const Home = () => {
 
   const { user } = useContext(UserContext);
-  const [friends, setFriends] = useState([]); // state variable to store the friends  
-  const [userData, setUserData] = useState(null); // state variable to store the user data
-  const [leaderboardData, setLeaderboardData] = useState([]); // state variable to store the leaderboard data
+  const [friends, setFriends] = useState([]);
+  const [userData, setUserData] = useState(null);
+  const [userFirstName, setUserFirstName] = useState('');
+  const [leaderboardData, setLeaderboardData] = useState([]);
 
   useEffect(() => {
     const fetchFriendsAndUser = async () => {
       const friendDocs = await getUserFriends(user);
-      const userDoc = await getUserData(user); // fetch the user data
-      setUserData(userDoc); // set the user data
-      setFriends(friendDocs); // update state with the found users
+      const userDoc = await getUserData(user);
+      setUserData(userDoc);
+      setUserFirstName(userDoc.firstName);
+      setFriends(friendDocs);
     };
 
     fetchFriendsAndUser();
@@ -26,29 +28,56 @@ const Home = () => {
 
   useEffect(() => {
     if (userData) {
-      setLeaderboardData([userData, ...friends]); // combine user data and friends data
+      setLeaderboardData([userData, ...friends]);
     } else {
       setLeaderboardData(friends);
     }
   }, [userData, friends]);
 
+  // Function to determine the time of day
+  const getTimeOfDay = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'morning';
+    if (hour < 18) return 'afternoon';
+    return 'evening';
+  };
+
+  const greeting = `Good ${getTimeOfDay()} ${userFirstName},`;
+
+
   return (
-    <div className='flex flex-col h-screen'>
+    <div className='flex flex-col h-screen pt-4'>
       <div className='flex-grow flex flex-col'>
-        <div className='flex flex-col items-center'>
-          <div className='pb-4'>
-            <PowerPickleIcon color='#02261C' />
-          </div>
-          <div id='UpComingEvents'></div>
-          <div className='pb-4'>
-            <h1 className='font-inter text-white text-[36px] font-semibold'>
-              Leaderboard
-            </h1>
+        <div className='pb-4 flex flex-col items-center'>
+          <h1 className='font-inter text-dark-blue text-[20px] font-semibold'>
+            Rankings
+          </h1>
+        </div>
+        <div className='pb-4'>
+          <div className='self-start'>
+            <h2 className='text-[16px] text-dark-blue pl-4 font-medium'>{greeting}</h2>
           </div>
         </div>
+
+        <div className='flex flex-col items-center'>
+          
+          <div className='pb-6'>
+            <PowerPickleIcon color='#011C40' />
+          </div>
+          <div id='UpComingEvents'></div>
+        </div>
         <div className='bg-off-white w-full flex flex-col flex-grow rounded-t-3xl'>
+          {/* ... */}
           <div className='overflow-y-auto w-full flex flex-col items-center'>
-            {leaderboardData.sort((a, b) => b.mmr - a.mmr).map((friend, index) => <LeaderBoardCard key={index} friend={friend} rank={index + 1} />)}
+            {leaderboardData.length > 0 ? (
+              leaderboardData.sort((a, b) => b.mmr - a.mmr).map((friend, index) => (
+                <LeaderBoardCard key={index} friend={friend} rank={index + 1} />
+              ))
+            ) : (
+              <p className='text-center text-dark-blue mt-10 '>
+                No friends yet, make some in the explore tab!
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -58,15 +87,5 @@ const Home = () => {
     </div>
   );
 }
-
-// No API Calls
-// const Home = () => {
-//   return (
-//     <div>
-//       Save the api calls
-//       <NavBar />
-//     </div>
-//   )
-// }
 
 export default Home;

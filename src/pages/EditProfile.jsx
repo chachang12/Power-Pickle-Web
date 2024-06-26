@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { uploadImageAndGetURL, getUserData, updateUserData, logout } from '../firebase';
-import { tempprofile } from '../assets';
+import { tempprofile, logouticon } from '../assets';
 import { UserContext } from '../UserContext.js';
 
 const EditProfile = () => {
-  const { userData, setUserData } = useContext(UserContext); // Get setUserData from context
+  const { userData, setUserData } = useContext(UserContext);
   const [selectedFile, setSelectedFile] = useState(null);
-  const navigate = useNavigate(); // Get navigate function
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -17,10 +17,10 @@ const EditProfile = () => {
     if (selectedFile) {
       try {
         const downloadURL = await uploadImageAndGetURL(selectedFile);
-        await updateUserData(downloadURL); // Only pass downloadURL
+        await updateUserData(downloadURL);
         const updatedUserData = await getUserData();
-        setUserData(updatedUserData); // Update user data in context
-        navigate('/profile'); // Navigate back to profile page
+        setUserData(updatedUserData);
+        navigate('/profile');
       } catch (error) {
         console.error('Error uploading image:', error);
       }
@@ -30,24 +30,29 @@ const EditProfile = () => {
   };
 
   return (
-    <div className='flex flex-col items-center mt-12'>
-      <div className="flex flex-row space-x-10 pb-4">
-        <img src={userData.profilePicture ? userData.profilePicture : tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080]" />
+    <div className='flex flex-col items-center mt-12 w-full h-screen'>
+      <div className="flex flex-row justify-center space-x-10 pb-4">
+        <img src={userData.profilePicture ? userData.profilePicture : tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] object-cover shadow-lg" />
       </div>
-      <h1 className='font-Inter text-white text-[28px] font-semibold pb-2'>
+      <h1 className='font-Inter text-dark-blue text-[28px] font-semibold pb-2'>
         {userData.username}
       </h1>
-      <div>
-        <input type="file" onChange={handleImageChange} />
-        <div className='flex flex-col'>
-          <button onClick={handleImageUpload}>Save Changes</button>
-        <button onClick={() => navigate('/profile')}>Cancel</button> {/* Cancel button */}
+      <div className="w-3/4 max-w-md">
+        <input type="file" onChange={handleImageChange} className="form-input mb-4" />
+        <div className='flex flex-col space-y-2'>
+          <button onClick={handleImageUpload} className="bg-dark-blue text-white font-medium py-2 px-4 rounded-xl ">Save Changes</button>
+          <button onClick={() => navigate('/profile')} className="bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-xl">Cancel</button>
+          <button onClick={logout} className="bg-red-700 text-white font-medium py-2 px-4 rounded-xl flex flex-col items-center">
+            <div className='flex flex-row items-center space-x-2'>
+              <h1>
+                Logout
+              </h1>
+              <img src={logouticon} className='w-[20px]'/>
+            </div>
+            
+          </button>
         </div>
-        
       </div>
-      <button onClick={logout}>
-        Logout
-      </button>
     </div>
   );
 };

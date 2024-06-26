@@ -1,6 +1,6 @@
-const mainHeaderStyle = 'font-inter text-light-green text-[46px] font-semibold py-10';
+const mainHeaderStyle = 'font-inter text-dark-blue text-[28px] font-semibold pb-2 pt-4';
 
-const matchCreationFormHeader = 'font-inter text-dark-green text-[20px] font-regular';
+const matchCreationFormHeader = 'font-inter text-dark-blue text-[20px] font-regular';
 
 export {mainHeaderStyle, matchCreationFormHeader};
 

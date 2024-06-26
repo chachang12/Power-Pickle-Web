@@ -8,6 +8,7 @@ import MatchCreation from './MatchCreation';
 import MatchConfirmation from './MatchConfirmation';
 import Friends from './Friends';
 import LandingPage from './LandingPage';
+import FriendProfile from './FriendProfile';
 
 
 
@@ -21,5 +22,6 @@ export {
     MatchCreation,
     MatchConfirmation,
     Friends,
-    LandingPage
+    LandingPage,
+    FriendProfile
 }

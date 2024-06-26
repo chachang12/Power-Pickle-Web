@@ -16,6 +16,7 @@ import person from './person.svg';
 import plus from './plus.svg';
 import pickleballstock from './pickleballstock.jpg';
 import carsonlogo from './carsonlogo.svg';
+import logouticon from './logouticon.svg';
 
 export {
     rank1,
@@ -35,5 +36,6 @@ export {
     person,
     plus,
     pickleballstock,
-    carsonlogo
+    carsonlogo,
+    logouticon,
 }

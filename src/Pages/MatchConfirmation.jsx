@@ -22,12 +22,21 @@ const MatchConfirmation = () => {
     const currentDate = new Date();
 
     const handleConfirmMatch = async () => {
+        // Enforces that overtime games are won by 2 points
         if (team1score > 10 && team2score > 10) {
             if (Math.abs(team1score - team2score) < 2) {
                 alert("Winner must win by two points");
                 return;
             }
         }
+
+        // Enforces that normal games have a winner at 11 points
+        if (Math.abs(team1score - team2score) > 2) {
+            if (!(team1score === 11 || team2score === 11)) {
+                alert("Game must end at 11");
+                return;
+            }
+        } 
 
         const mmrChanges = calculateMMR(team1score, team2score, userData, teammate, opponent1, opponent2);
     
@@ -61,33 +70,50 @@ const MatchConfirmation = () => {
     <div className='flex flex-col items-center pt-4'>
         <div className='flex flex-row space-x-12 items-center'>
             <ConfirmationIcon player={userData}/>
-            <div className="border-l-4 border-white h-[250px] mx-2 rounded-lg"></div>
+            <div className="border-l-4 border-white h-[200px] mx-2 rounded-lg"></div>
             <ConfirmationIcon player={teammate}/>
         </div>
 
-        <div className='border-t-4 white w-[90%] my-2 rounded-lg'></div>
+        <div className='border-t-4 white w-[90%] my-1 rounded-lg'></div>
 
-        <div className='py-8'>
-            <form className='flex flex-row space-x-12'>
+        <div className='py-4'>
+            <form className='flex flex-row space-x-6'>
                 <div className='flex flex-col items-center'>
                     <h2 className='font-Inter text-white'>
                         Team 1 Score
                     </h2>
                     <input 
-                        className='w-[50px] bg-off-white p-2 rounded-md my-2 font-Inter placeholder-dark-green font-light opacity-80'
+                        className='w-[50px] bg-dark-blue text-white p-2 rounded-md my-2 font-Inter font-light'
                         value={team1score}
-                        onChange={(e) => setTeam1Score(parseInt(e.target.value, 10))}
-                    >
-                    </input>
-                    </div>
-
-                    <div className='flex flex-col items-center'>
+                        onChange={(e) => {
+                            const value = parseInt(e.target.value, 10);
+                            if (isNaN(value)) {
+                                setTeam1Score(''); // Reset the box to nothing if a non-number is entered
+                            } else {
+                                setTeam1Score(value);
+                            }
+                        }}
+                    />
+                </div>
+                <button className='py-4' onClick={handleConfirmMatch} >
+                    <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-blue px-3 py-2 rounded-xl '>
+                        Confirm<br />
+                        Match
+                    </h6>
+                </button>
+                <div className='flex flex-col items-center'>
                     <input 
-                        className='w-[50px] bg-off-white p-2 rounded-md my-2 font-Inter placeholder-dark-green font-light opacity-80'
+                        className='w-[50px] bg-dark-blue text-white p-2 rounded-md my-2 font-Inter font-light'
                         value={team2score}
-                        onChange={(e) => setTeam2Score(parseInt(e.target.value, 10))}
-                    >
-                    </input>
+                        onChange={(e) => {
+                            const value = parseInt(e.target.value, 10);
+                            if (isNaN(value)) {
+                                setTeam2Score(''); // Reset the box to nothing if a non-number is entered
+                            } else {
+                                setTeam2Score(value);
+                            }
+                        }}
+                    />
                     <h2 className='font-Inter text-white'>
                         Team 2 Score
                     </h2>
@@ -96,19 +122,13 @@ const MatchConfirmation = () => {
         </div>
         
 
-        <div className='border-t-4 white w-[90%] my-2'></div>
+        <div className='border-t-4 white w-[90%] my-1'></div>
 
         <div className='flex flex-row space-x-12 items-center'>
             <ConfirmationIcon player={opponent1}/>
-            <div className="border-l-4 border-white h-[250px] mx-2 rounded-lg"></div>
+            <div className="border-l-4 border-white h-[200px] mx-2 rounded-lg"></div>
             <ConfirmationIcon player={opponent2}/>
-        </div>
-        {/* Route back home, show some sign of confirmation. */}
-        <button className='py-4' onClick={handleConfirmMatch} >
-            <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-green px-2 py-1 rounded-md'>
-                Confirm Match
-            </h6>
-        </button>
+        </div>        
         <div className='fixed inset-x-0 bottom-6'>
           <NavBar />
         </div>

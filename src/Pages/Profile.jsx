@@ -44,7 +44,10 @@ const Profile = () => {
   
 
   return (
-    <div className='flex flex-col h-screen items-center mt-12 '>
+    <div className='flex flex-col h-screen items-center mt-6 '>
+        <h1 className='font-inter text-dark-blue text-[20px] font-semibold pb-4'>
+            Profile
+        </h1>
         <div className="flex flex-row space-x-10 pb-4">
             <img src={userData.profilePicture || tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
             <img src={rankImage} alt="rank" className="h-[150px]" />
@@ -55,7 +58,7 @@ const Profile = () => {
         <div className='pb-4'>
             <Link 
                 to={'/editprofile'}
-                className='bg-light-green px-14 py-2 rounded-md text-dark-green font-semibold'>
+                className='bg-dark-blue px-14 py-2 rounded-md text-white font-regular'>
                 Edit Profile
             </Link>
         </div>
@@ -96,14 +99,14 @@ const Profile = () => {
         </div>
         <div id='RecentMatches' className='flex flex-col items-center pt-4 bg-off-white w-full rounded-t-3xl flex-grow'>
             <div className='w-[90%]'>
-                <h2 className='text-dark-green font-semibold pb-2'>
+                <h2 className='text-dark-blue font-semibold pb-2'>
                     Recent Matches
                 </h2>
             </div>
             <div className='overflow-y-auto w-full flex-grow flex flex-col items-center'> {/* Make this div grow to fill available space and scrollable */}
                 <div className='w-[90%]'>
                     {matches.map((match, index) => (
-                    <MatchCard key={index} match={match} />
+                    <MatchCard key={index} match={match} playerData={userData} />
                     ))}
                 </div>
             </div>
