@@ -23,7 +23,8 @@ const FriendCard = ({ friend }) => {
 
     const handleRemoveFriend = async () => {
         try {
-            await removeFriend(friend); // call the removeFriend function, passing the friend's ID
+            await removeFriend(friend.id);
+            alert('Friend removed successfully');
         } catch (error) {
             console.error(error);
         }

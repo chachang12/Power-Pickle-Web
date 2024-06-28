@@ -200,18 +200,29 @@ const removeFriend = async (friendId) => {
     const userSnap = await getDoc(userRef);
     const friendSnap = await getDoc(friendRef);
 
+    if (!userSnap.exists() || !friendSnap.exists()) {
+      console.log('One of the users does not exist.');
+      return;
+    }
+
     // Ensure friends array exists
     const userFriends = userSnap.data().friends || [];
     const friendFriends = friendSnap.data().friends || [];
 
+    // Correctly modify the current user's friends array
+    const updatedUserFriends = userFriends.filter(id => id !== friendId);
+
+    // Correctly modify the friend's friends array
+    const updatedFriendFriends = friendFriends.filter(id => id !== user.uid);
+
     // Update the current user's friends array
     batch.update(userRef, {
-      friends: userFriends.filter(id => id !== friendId) // remove the friend's ID from the friends array
+      friends: updatedUserFriends
     });
 
     // Update the friend's friends array
     batch.update(friendRef, {
-      friends: friendFriends.filter(id => id !== user.uid) // remove the user's ID from the friend's friends array
+      friends: updatedFriendFriends
     });
 
     // Commit the batch

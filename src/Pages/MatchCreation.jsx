@@ -49,6 +49,15 @@ const MatchCreation = () => {
           <PowerPickleIcon color='#011C40' />
         </div>
       <div className='flex flex-col items-center'>
+
+        {teammateData && opponent1Data && opponent2Data && (
+            <button onClick={handleNext} className='py-4' >
+              <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-blue px-2 py-1 rounded-md'>
+                Next
+              </h6>
+            </button>
+          )}
+
         <h2 className={matchCreationFormHeader}>
           Select Teammate
         </h2>
@@ -111,13 +120,7 @@ const MatchCreation = () => {
             Confirm
           </button>
         </div>
-        {teammateData && opponent1Data && opponent2Data && (
-          <button onClick={handleNext} className='py-4' >
-            <h6 className='font-Inter font-regular text-[14px] text-white bg-dark-blue px-2 py-1 rounded-md'>
-              Next
-            </h6>
-          </button>
-        )}
+        
       </div>
       <div className='fixed inset-x-0 bottom-6'>
         <NavBar />

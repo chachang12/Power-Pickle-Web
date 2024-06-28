@@ -37,7 +37,7 @@ const EditProfile = () => {
       <h1 className='font-Inter text-dark-blue text-[28px] font-semibold pb-2'>
         {userData.username}
       </h1>
-      <div className="w-3/4 max-w-md">
+      <div className="w-[50%] max-w-md">
         <input type="file" onChange={handleImageChange} className="form-input mb-4" />
         <div className='flex flex-col space-y-2'>
           <button onClick={handleImageUpload} className="bg-dark-blue text-white font-medium py-2 px-4 rounded-xl ">Save Changes</button>
