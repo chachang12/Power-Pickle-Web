@@ -33,7 +33,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{user, userData, setUserContext, setUserData, error}}>
-      <Router>
+      <Router basename='/Power-Pickle-Web/'>
         <Routes>
           
           <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />

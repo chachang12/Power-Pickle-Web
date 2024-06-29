@@ -52,9 +52,12 @@ const Profile = () => {
             <img src={userData.profilePicture || tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
             <img src={rankImage} alt="rank" className="h-[150px]" />
         </div>
-        <h1 className='font-Inter text-white text-[28px] font-semibold pb-4' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>
+        <h1 className='font-Inter text-white text-[28px] font-semibold' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>
             {userData.username}
         </h1>
+        <h2 className='pb-4 font-Inter text-white text-[18px] font-regular'>
+            {userData.firstName} {userData.lastName}
+        </h2>
         <div className='pb-4'>
             <Link 
                 to={'/editprofile'}

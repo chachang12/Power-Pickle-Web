@@ -16,7 +16,8 @@ const Explore = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const searchedUsers = await searchUsers(search)
+    const lowerCaseSearch = search.toLowerCase()
+    const searchedUsers = await searchUsers(lowerCaseSearch)
     setUsers(searchedUsers) // update state with the found users
     
     searchedUsers.forEach(searchedUser => {

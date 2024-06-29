@@ -25,7 +25,8 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      const user = await signUp(email, password, username, firstName, lastName, phoneNumber, mmr, profilePicture, matchesPlayed, wins, friends);
+      const lowercaseUsername = username.toLowerCase();
+      const user = await signUp(email, password, lowercaseUsername, firstName, lastName, phoneNumber, mmr, profilePicture, matchesPlayed, wins, friends);
       console.log('User signed up:', user);
 
       // Set the UserContext
@@ -34,7 +35,7 @@ const Register = () => {
       // Navigate to the home page
       navigate('/home');
     } catch (error) {
-      console.error('Error signing up:', error);
+      alert('Error signing up:', error);
     }
   };
 
@@ -51,50 +52,55 @@ return (
       <div className='bg-off-white rounded-t-3xl w-full flex flex-col items-center flex-grow'>
         <form onSubmit={handleSubmit} className='flex flex-col items-center w-[85%]'>
             <div className='flex flex-col flex-grow w-[100%] pt-4'>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="First Name"
-                className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
-              />
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="Last Name"
-                className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
-              />
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                className='bg-dark-blue p-3 rounded-xl text-white   my-2 font-Inter placeholder-white font-light'
-              />
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                className='bg-dark-blue p-3 rounded-xl text-white   my-2 font-Inter placeholder-white font-light'
-              />
-              <input
-                type="text"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                placeholder="Phone Number"
-                className='bg-dark-blue p-3 rounded-xl text-white   my-2 font-Inter placeholder-white font-light'
-              />
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                className='bg-dark-blue p-3 rounded-xl text-white   my-2 font-Inter placeholder-white font-light'
-              />
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="First Name"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Last Name"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
+            <input
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Phone Number"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className='bg-dark-blue p-3 rounded-xl text-white my-2 font-Inter placeholder-white font-light'
+              required
+            />
             </div>
-          
           <button type="submit" className='py-4'>
             <h6 className='font-Inter font-medium text-[14px] text-white bg-dark-blue px-4 py-2 rounded-xl'>
               Register

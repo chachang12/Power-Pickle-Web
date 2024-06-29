@@ -1,7 +1,7 @@
 function mmrEquationTop(userMMR, opposingMMRAverage, scoreDifference) {
     const mmrDifference = Math.abs(userMMR - opposingMMRAverage);
     // mmr equation
-    const mmrChange = Math.round((25 + (0.001 * mmrDifference)) + (scoreDifference * 0.0000025 * Math.pow(mmrDifference, 2)))
+    let mmrChange = Math.round((25 + (0.001 * mmrDifference)) + (scoreDifference * 0.0000025 * Math.pow(mmrDifference, 2)))
     if (userMMR - mmrChange < 0) {
         mmrChange = userMMR;
     }
@@ -11,7 +11,7 @@ function mmrEquationTop(userMMR, opposingMMRAverage, scoreDifference) {
 function mmrEquationBottom(userMMR, opposingMMRAverage, scoreDifference) {
     const mmrDifference = Math.abs(userMMR - opposingMMRAverage);
     // mmr equation
-    const mmrChange = Math.round(-(0.00000163) * Math.pow((mmrDifference - (80 * (scoreDifference))), 2) + 25)
+    let mmrChange = Math.round(-(0.00000163) * Math.pow((mmrDifference - (80 * (scoreDifference))), 2) + 25)
     if (mmrChange < 5) {
         return 5;
     }
@@ -28,7 +28,7 @@ function mmrEquationBottom(userMMR, opposingMMRAverage, scoreDifference) {
 
 
 export default function calculateMMR(team1score, team2score, userData, teammate, opponent1, opponent2) {
-    const mmrChange = {};
+    let mmrChange = {};
     const scoreDifference = Math.abs(team1score - team2score); // absolute value of the difference
     const team1Average = (userData.mmr + teammate.mmr) / 2;
     const team2Average = (opponent1.mmr + opponent2.mmr) / 2;

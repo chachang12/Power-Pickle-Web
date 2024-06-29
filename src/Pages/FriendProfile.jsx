@@ -32,9 +32,12 @@ const FriendProfile = () => {
         <img src={friend.profilePicture || tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
         <img src={rankImage} alt="rank" className="h-[150px]" />
       </div>
-      <h1 className='font-Inter text-white text-[28px] font-semibold pb-4' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>
+      <h1 className='font-Inter text-white text-[28px] font-semibold' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>
         {friend.username}
       </h1>
+      <h2 className='pb-2 font-Inter text-white text-[18px] font-regular'>
+          {friend.firstName} {friend.lastName}
+      </h2>
       <div className='text-white font-inter pb-4'>
         <div className='flex flex-row space-x-6'>
           <div className='flex flex-col items-center'>
