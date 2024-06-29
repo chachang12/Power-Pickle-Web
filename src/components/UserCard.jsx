@@ -54,7 +54,7 @@ const UserCard = ({ searchedUser }) => {
     return (
         <div className='m-4 w-[90%]' onClick={handleClick} style={{ cursor: 'pointer' }}>
             <div className='flex flex-row justify-between bg-dark-blue px-4 py-2 rounded-xl space-x-4 items-center border border-white border-opacity-50 backdrop-blur-md bg-opacity-90'>
-                <img src={searchedUser.profilePicture} alt={searchedUser.username} className="rounded-full w-[75px] h-[75px] bg-[#808080] object-cover" />
+                <img src={searchedUser.profilePicture} alt={searchedUser.username} className="rounded-full w-[75px] h-[75px] bg-white object-cover" />
                 <h2 className='font-Inter font-light text-white'>
                     {searchedUser.username}
                 </h2>

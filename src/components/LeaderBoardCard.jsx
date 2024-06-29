@@ -25,7 +25,7 @@ const LeaderBoardCard = ({ friend, rank }) => {
     <div className='mt-4 w-[90%]' onClick={handleClick} style={{ cursor: 'pointer' }}> {/* Add onClick handler */}
       <div className='flex flex-row bg-matcha-green px-4 py-2 rounded-xl space-x-4 items-center text-white justify-between'>
         <h2 className='font-light'>{rank}</h2>
-        <img src={friend.profilePicture || person} alt={friend.username} className="rounded-full w-[65px] h-[65px] bg-[#808080] object-cover" />
+        <img src={friend.profilePicture || person} alt={friend.username} className="rounded-full w-[65px] h-[65px] bg-white object-cover" />
         <h2 className='font-Inter font-light'>
           {friend.username}
         </h2>

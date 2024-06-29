@@ -49,7 +49,7 @@ const Profile = () => {
             Profile
         </h1>
         <div className="flex flex-row space-x-10 pb-4">
-            <img src={userData.profilePicture || person} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-[#808080] object-cover" />
+            <img src={userData.profilePicture || person} alt="profileimage" className="rounded-full w-[150px] h-[150px] bg-white object-cover" />
             <img src={rankImage} alt="rank" className="h-[150px]" />
         </div>
         <h1 className='font-Inter text-white text-[28px] font-semibold' style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.25)' }}>

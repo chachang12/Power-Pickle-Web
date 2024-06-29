@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext'; // import UserContext
-import { rank1, rank2, rank3, rank4, unranked } from '../assets'
+import { rank1, rank2, rank3, rank4, unranked, person } from '../assets'
 import { getRankImage } from '../utils'
 import { addFriend, removeFriend } from '../firebase';
 import { getUserFriends } from '../firestoreQueries';
@@ -33,7 +33,7 @@ const FriendCard = ({ friend }) => {
   return (
     <div className='mb-4 w-[95%]' onClick={showFriendProfile}>
         <div className='flex flex-row bg-dark-blue px-4 py-2 rounded-lg bg-opacity-90 space-x-4 items-center justify-between'> {/* Added justify-between */}
-            <img src={friend.profilePicture} alt={friend.username} className="rounded-full w-[75px] h-[75px] object-cover" />
+            <img src={friend.profilePicture || person} alt={friend.username} className="rounded-full w-[75px] h-[75px] object-cover bg-white" />
             <h2 className='font-Inter font-light text-white'>
                 {friend.username}
             </h2>
