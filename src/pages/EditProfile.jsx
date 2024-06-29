@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uploadImageAndGetURL, getUserData, updateUserData, logout } from '../firebase';
-import { tempprofile, logouticon } from '../assets';
+import { person, logouticon } from '../assets';
 import { UserContext } from '../UserContext.js';
 
 const EditProfile = () => {
@@ -32,7 +32,7 @@ const EditProfile = () => {
   return (
     <div className='flex flex-col items-center mt-12 w-full h-screen'>
       <div className="flex flex-row justify-center space-x-10 pb-4">
-        <img src={userData.profilePicture ? userData.profilePicture : tempprofile} alt="profileimage" className="rounded-full w-[150px] h-[150px] object-cover shadow-lg" />
+        <img src={userData.profilePicture ? userData.profilePicture : person} alt="profileimage" className="rounded-full w-[150px] h-[150px] object-cover shadow-lg" />
       </div>
       <h1 className='font-Inter text-dark-blue text-[28px] font-semibold pb-2'>
         {userData.username}
