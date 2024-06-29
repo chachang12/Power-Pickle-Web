@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Login, Register, Home, Profile, EditProfile, Explore, MatchCreation, MatchConfirmation, Friends, LandingPage, FriendProfile } from './pages';
 import { db, app, analytics, auth, getUserData } from './firebase';
 import { UserContext } from './UserContext';
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{user, userData, setUserContext, setUserData, error}}>
-      <Router basename='/Power-Pickle-Web/'>
+      <Router>
         <Routes>
           
           <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
