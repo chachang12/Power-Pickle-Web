@@ -35,7 +35,6 @@ function App() {
     <UserContext.Provider value={{user, userData, setUserContext, setUserData, error}}>
       <Router>
         <Routes>
-          
           <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
           <Route path="/register" element={user ? <Navigate to="/home" /> : <Register />} />
           <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
